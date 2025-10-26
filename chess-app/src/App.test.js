@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('MiniCR Fan Arena', () => {
+  it('renders hero title', () => {
+    render(<App />);
+    expect(screen.getByText(/MiniCR Fan Arena/i)).toBeInTheDocument();
+  });
+
+  it('renders authentication panel when logged out', () => {
+    render(<App />);
+    expect(screen.getByText(/Enter the Arena/i)).toBeInTheDocument();
+  });
 });
