@@ -1,38 +1,213 @@
+:root {
+  --background: linear-gradient(135deg, #1b1f3b 0%, #283c86 100%);
+  --panel-bg: rgba(12, 20, 48, 0.85);
+  --accent: #ffb400;
+  --accent-secondary: #25c5ff;
+  --text-primary: #ffffff;
+  --text-muted: #b8c2ff;
+  --danger: #ff5f7e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Supercell-Magic', 'Clash-Regular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.App-header {
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: var(--accent);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto 2rem auto;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form input {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--accent);
+  color: #2b1900;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.button.secondary {
+  background: var(--accent-secondary);
+  color: #02242f;
+}
+
+.button.danger {
+  background: var(--danger);
+  color: #2c0010;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: rgba(15, 25, 60, 0.9);
+  border-radius: 18px;
+  padding: 1.25rem;
+  text-align: left;
+  position: relative;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card.selected {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--accent-secondary);
+}
+
+.card p {
+  margin: 0.25rem 0;
+  color: var(--text-muted);
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background: var(--accent-secondary);
+  color: #001b29;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.deck-counter {
+  margin-top: 1rem;
+  color: var(--text-muted);
+}
+
+.match-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.tower-card {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 1.5rem;
+  border-radius: 18px;
+}
+
+.tower-health {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.elixir-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  height: 12px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.elixir-fill {
+  background: var(--accent-secondary);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.error-banner {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 95, 126, 0.2);
+  border-left: 4px solid var(--danger);
+  border-radius: 12px;
+  color: var(--text-primary);
+}
+
+footer {
+  margin-top: auto;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2.25rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .panel {
+    margin: 0 1rem 2rem 1rem;
+    padding: 1.5rem;
   }
 }

@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# MiniCR Fan Arena
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MiniCR is a nonprofit fan-made Clash Royale tribute built for educational purposes. The project demonstrates how to stitch together a lightweight Socket.IO backend with a React front end, simplified matchmaking, and a curated set of ten familiar-style cards.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Account creation and login.** Minimal username/password authentication with session tokens.
+- **Deck building.** Choose eight cards from a roster of ten lovingly recreated units and spells.
+- **Online arena.** Socket.IO server pairs queued players and synchronizes tower health, elixir flow, and match outcomes in real time.
+- **Fair-use friendly.** All artwork and names are original while capturing the same strategic beats of the Clash Royale experience.
 
-### `npm start`
+## Project structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+MiniCR/
+├── chess-app/        # React front end (Create React App)
+└── server/           # Express + Socket.IO backend
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+Install dependencies for both the server and client:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd server
+npm install
+cd ../chess-app
+npm install
+```
 
-### `npm run build`
+### Running the development stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Start the backend server (port `4000` by default):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cd server
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In a new terminal, run the React development server:
 
-### `npm run eject`
+```bash
+cd chess-app
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open <http://localhost:3000> to experience the MiniCR arena.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Environment variables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The client automatically proxies API calls to `http://localhost:4000` in development. To point at a different backend, set `REACT_APP_API_BASE` before running `npm start`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Production build
 
-## Learn More
+```bash
+cd chess-app
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This produces a static build in `chess-app/build` that can be deployed alongside the Node.js server.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Disclaimer
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MiniCR is an unofficial fan project and is not affiliated with, endorsed, or sponsored by Supercell. All trademarks belong to their respective owners.
